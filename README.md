@@ -13,16 +13,23 @@ Inspiration:
 import jdice2
 
 
-# Returns a string of words. n is the number of words you want
+# returns a string of words. n is the number of words you want
 phrase = jdice2.getwords(n=12)
 print(phrase)
 # educate noodle history team arctic resource worth random box endless engage unveil
 
 
-# Returns as a python list
+# returns as a python list
 wordlist = jdice2.getwordlist(4)
 print(wordlist)
 # ['educate', 'noodle', 'history', 'team']
+
+
+# returns full word based on first four chararcters
+ff = "corr"
+full_word = jdice2.firstfour(ff)
+print(full_word)
+# correct
 
 
 # returns single word based on the diceware code.
