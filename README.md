@@ -4,6 +4,8 @@ Python implementation of diceware using the bip39 wordlist.
 ## :books: About
 Generate a pseudorandom phrase from the bip39 wordlist for passphrases or seed phrases. The method uses a coin flip and four six-sided die to generate a key (h1111 - t4362) that's paired with a word on the wordlist. In this implementation five dice are used, with the first die simulating the coin flip. Even numbers are heads and odds are tails. 
 
+Note: This does **not** generate bip39-compliant seed phrases. Hashing, checksums, etc. are not implemented. This just picks random words from the list based on pseudo-dice. If you need valid phrases you can [look here](https://github.com/hatgit/BIP39-Mnemonic-Tools).
+
 Inspiration: 
 - [xkcd: correct horse battery staple](https://xkcd.com/936/)
 - [Dr. Mike Pound's](https://github.com/mikepound) video for Computerphile on [how to choose a password](https://www.youtube.com/watch?v=3NjQ9b3pgIg). 
