@@ -16,6 +16,7 @@ import jdice2
 
 
 # returns a string of words. n is the number of words you want
+# Note: This is NOT bip39-compliant. It's just random words
 phrase = jdice2.getwords(n=12)
 print(phrase)
 # educate noodle history team arctic resource worth random box endless engage unveil
@@ -25,6 +26,12 @@ print(phrase)
 wordlist = jdice2.getwordlist(4)
 print(wordlist)
 # ['educate', 'noodle', 'history', 'team']
+
+
+# returns a 24-word bip39-compliant seed phrase
+bip39_seed_phrase = jdice2.getbip39()
+print(bip39_seed_phrase)
+# helmet distance wedding frequent chunk burst, etc...
 
 
 # returns full word based on first four chararcters
@@ -51,6 +58,13 @@ xkcd = ["correct","horse","battery","staple"]
 code_list = jdice2.getcodelist(xkcd)
 print(code_list)
 # ['h2555', 'h5133', 'Word not in list!', 'Word not in list!']
+
+
+# returns a randomly generated password
+# Not wordlist related, just convenient
+password = jdice2.generate_password(passwordlength=16)
+print(password)
+# EfYZ<8L,9PeyM??f
 ```
 
 ## :warning: Disclaimer
@@ -58,3 +72,4 @@ This is a hobby project and a proof-of-concept. Do not use this to generate real
 
 ## :mega: Credits
 - [taelfrinn](https://github.com/taelfrinn/) for the original [analog implementation](https://github.com/taelfrinn/Bip39-diceware) (physical dice and coin).
+- [armantheparman](https://armantheparman.com/) for [this article](https://armantheparman.com/bitcoin-seed-with-dice/) on how to correctly generate a bip39-compliant seed phrase from dice including the checksum/last word.
