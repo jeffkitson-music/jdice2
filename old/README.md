@@ -1,4 +1,4 @@
-# 🎲 jdice2
+# 🎲 jdice2 - Old Method
 Python implementation of diceware using the bip39 wordlist.
 
 ## :books: About
