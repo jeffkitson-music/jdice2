@@ -2,9 +2,9 @@
 Python implementation of diceware using the bip39 wordlist.
 
 ## :books: About
-Generate a pseudorandom phrase from the bip39 wordlist for passphrases or seed phrases. The method uses a coin flip and four six-sided die to generate a key (h1111 - t4362) that's paired with a word on the wordlist. In this implementation five dice are used, with the first die simulating the coin flip. Even numbers are heads and odds are tails. 
+Generate a pseudorandom phrase from the bip39 wordlist for passphrases or seed phrases. This script implements [Arman the Parman's method](https://armantheparman.com/dicev2/) to derive the seed phrase. 
 
-Note: getbip39() is the **only** function that gives a bip39-compliant seed phrase. The other functions just pull random words and do **not** implement the last word checksum. This repo is really just for learning purposes and not intended for serious use. Please heed the usual warnings about generating passwords and seed phrases securely offline, etc. Need something full-featured? Try Ian Coleman's [bip39 tools](https://iancoleman.io/bip39/).
+**Note**: The old method of simulating actual dice is found in the "old" folder. 
 
 Inspiration: 
 - [xkcd: correct horse battery staple](https://xkcd.com/936/)
@@ -15,60 +15,33 @@ Inspiration:
 import jdice2
 
 
-# returns a string of words. n is the number of words you want
-# Note: This is NOT bip39-compliant. It's just random words
-phrase = jdice2.getwords(n=12)
-print(phrase)
-# educate noodle history team arctic resource worth random box endless engage unveil
-
-
-# returns as a python list
-wordlist = jdice2.getwordlist(4)
-print(wordlist)
-# ['educate', 'noodle', 'history', 'team']
-
-
-# returns a 24-word bip39-compliant seed phrase
-bip39_seed_phrase = jdice2.getbip39()
-print(bip39_seed_phrase)
+seed_phrase = jdice2.get_bip39()
+print(seed_phrase)
 # helmet distance wedding frequent chunk burst, etc...
 
 
+# Other utilities
+
 # returns full word based on first four chararcters
 ff = "corr"
-full_word = jdice2.firstfour(ff)
+full_word = jdice2.first_four(ff)
 print(full_word)
 # correct
 
 
-# returns single word based on the diceware code.
-word = jdice2.getword("h2555")
-print(word)
-# correct
-
-
-# returns the diceware code based on the word
-code = jdice2.getcode("horse")
-print(code)
-# h5133
-
-
-# returns a python list of codes based on a list of words
-xkcd = ["correct","horse","battery","staple"]
-code_list = jdice2.getcodelist(xkcd)
-print(code_list)
-# ['h2555', 'h5133', 'Word not in list!', 'Word not in list!']
-
-
-# returns a randomly generated password
-# Not wordlist related, just convenient
+# returns a randomly generated password - Not wordlist related, just convenient
 password = jdice2.generate_password(passwordlength=16)
 print(password)
 # EfYZ<8L,9PeyM??f
 ```
 
-## :warning: Disclaimer
-This is a hobby project and a proof-of-concept. Do not use this to generate real passwords or seed phrases. [Pseudorandom isn't random](https://simplicable.com/new/pseudorandom-vs-random).
+## :warning: Disclaimer and Security Warnings
+- This is a hobby project, proof-of-concept, and for learning purposes only. 
+- **Do not use this to generate real seed phrases.** 
+- [Pseudorandom isn't random](https://simplicable.com/new/pseudorandom-vs-random).
+- If you do proceed at your own risk, heed the usual warnings about generating passwords and seed phrases securely in a **fully offline, air-gapped environment.** 
+- Need something full-featured? Try Ian Coleman's [bip39 tools](https://iancoleman.io/bip39/).
+
 
 ## :mega: Credits
 - [taelfrinn](https://github.com/taelfrinn/) for the original [analog implementation](https://github.com/taelfrinn/Bip39-diceware) (physical dice and coin).
